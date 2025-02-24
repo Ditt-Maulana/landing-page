@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cemilus - Landing Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Reset dasar CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: linear-gradient(to bottom right, #28a745, #2e5930);
+            color: white;
+            width: 250px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            height: 100%;
+        }
+
+        .logo-brand img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            margin-left: 270px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-section {
+            background: linear-gradient(to bottom right, #28a745, #2e5930);
+            color: white;
+            width: 100%;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .judul-header {
+            font-size: 2.5rem;
+            margin: 20px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .copywriting {
+            font-size: 1.1rem;
+            margin: 10px 0 30px;
+        }
+
+        .tombol-cta {
+            background-color: #fff;
+            color: #28a745;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .tombol-cta:hover {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .product-section {
+            background-color: #e0f7df;
+            color: #333;
+            width: 100%;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .product-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2e5930;
+        }
+
+        .product-features {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            background-color: #fff;
+            width: 45%;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-item img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .feature-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .product-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .product-item {
+            background-color: #fff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: left;
+            gap: 10px;
+        }
+
+        .product-item img {
+            width: 150px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product-details {
+            width: 100%;
+        }
+
+        .product-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .product-details p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .cta-button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .cta-button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #218838;
+        }
+
+        /* Responsiveness */
+        @media (min-width: 600px) {
+            .product-features {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .feature-item {
+                width: 48%;
+            }
+
+            .product-container {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .product-item {
+                width: 48%;
+            }
+        }
+
+        /* Social Media Section */
+        .social-media {
+            margin-top: 20px;
+        }
+
+        .social-media a {
+            color: #333;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-media a:hover {
+            color: #28a745;
+        }
+
+        /* Tambahan untuk ikon WhatsApp */
+        .whatsapp-icon {
+            color: #25D366;
+            font-size: 1.5rem;
+            margin-left: 10px;
+        }
+
+        /* Testimoni Pelanggan */
+        .testimonial-container {
+            display: flex;
+            justify-content: space-between; /* Menjaga testimoni sejajar */
+            gap: 20px; /* Jarak antar testimoni */
+        }
+
+        .testimonial-item {
+            background-color: #fff;
+            border: 3px solid #28a745; /* Border yang lebih lebar */
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: calc(32%); /* Lebar item testimoni */
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .testimonial-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .testimonial-name {
+            font-weight: bold;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo-brand">
+            <img src="asset/cuy.jpg" alt="Logo Brand">
+        </div>
+        <h2>ZEN STORE</h2>
+        <p>Camilan keripik tempe lezat</p>
+    </div>
+
+    <div class="content">
+        <div class="hero-section">
+            <h1 class="judul-header">Rasakan kelezatan alami dan manfaat kesehatan dari Keripik Tempe ZEN</h1>
+            <p class="tagline">Camilan inovatif yang terbuat dari tempe pilihan berkualitas</p>
+            <p class="copywriting">Nikmati kenikmatan tempe dalam setiap gigitan dan jaga kesehatan Anda dengan cara yang nikmat</p>
+            
+            <a href="https://wa.me/6281234567890" class="tombol-cta" target="_blank">Hubungi via WhatsApp</a>
+        </div>
+
+        <div class="product-section">
+            <h2>Pengertian Produk</h2>
+            <p>Bosan dengan camilan yang mengandung bahan kimia? Keripik Tempe ZEN hadir sebagai alternatif sehat untuk Anda.</p>
+            <div class="product-features">
+                <div class="feature-item">
+                    <img src="Asset/tempe.png" alt="Bahan Alami">
+                    <h3>Bahan Alami</h3>
+                    <p>Terbuat dari 100% tempe pilihan tanpa pengawet atau bahan kimia berbahaya. Rasakan gurihnya tempe dalam setiap gigitan.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="Asset/tempe.png" alt="Kemasan Praktis">
+                    <h3>Kemasan Praktis</h3>
+                    <p>Dikemas dalam paket yang mudah dibawa, Keripik Tempe ZEN cocok untuk menemani aktivitas sehari-hari, baik di rumah, kantor, maupun saat berpergian.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="Asset/tempe.png" alt="Rasa Alami">
+                    <h3>Rasa Alami</h3>
+                    <p>Setiap potongan Keripik Tempe ZEN mempertahankan cita rasa tempe asli yang gurih dan renyah, membuatnya menjadi pilihan cemilan yang lezat.</p>
+                </div>
+                <div class="feature-item">
+                    <img src="Asset/tempe.png" alt="Nutrisi Lengkap">
+                    <h3>Nutrisi Lengkap</h3>
+                    <p>Kaya akan protein nabati, serat, dan isoflavon, Keripik Tempe ZEN mendukung kesehatan tubuh Anda. Nikmati manfaat tempe dalam bentuk yang praktis dan lezat.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-section">
+            <h2>Produk</h2>
+            <div class="product-container">
+                <div class="product-item">
+                    <img src="Asset/tempe.png" alt="Keripik Tempe Original">
+                    <div class="product-details">
+                        <h3>KERIPIK TEMPE ORIGINAL</h3>
+                        <p>Rasakan kelezatan alami dan manfaat kesehatan dari Keripik Tempe ZEN, cemilan inovatif yang terbuat dari tempe pilihan berkualitas tinggi.</p>
+                        <div class="cta-button-container">
+                            <a href="#" class="cta-button">Learn More</a>
+                            <a href="https://wa.me/6285290762822" target="_blank" class="cta-button">Beli</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-item">
+                    <img src="Asset/tempe.png" alt="Keripik Tempe Pedas">
+                    <div class="product-details">
+                        <h3>KERIPIK TEMPE PEDAS</h3>
+                        <p>Rasakan kelezatan pedas dan manfaat kesehatan dari Keripik Tempe ZEN, cemilan inovatif yang terbuat dari tempe pilihan berkualitas tinggi.</p>
+                        <div class="cta-button-container">
+                            <a href="#" class="cta-button">Learn More</a>
+                            <a href="https://wa.me/6285290762822" target="_blank" class="cta-button">Beli</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-section">
+            <h2>Testimoni Pelanggan</h2>
+            <div class="testimonial-container">
+                <div class="testimonial-item">
+                    <img src="asset/rino.jpg" alt="Pelanggan 1">
+                    <p class="testimonial-text">"Keripik Tempe ZEN adalah camilan favorit di rumah. Renyah dan gurihnya pas banget!"</p>
+                    <p class="testimonial-name">- Bagus Rino</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="asset/maman.jpg" alt="Pelanggan 2">
+                    <p class="testimonial-text">"Suka banget sama Keripik Tempe Pedas ZEN. Pedasnya pas dan gurihnya mantap!"</p>
+                    <p class="testimonial-name">- Sulaiman Saputra</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="asset/bagas.jpg" alt="Pelanggan 3">
+                    <p class="testimonial-text">"Keripik Tempe ZEN jadi cemilan wajib saat kerja. Sehat dan bikin kenyang!"</p>
+                    <p class="testimonial-name">- Bagas Prasetya</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="social-media">
+            <a href="https://www.instagram.com/adi7_ya_" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@Adtzen" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/6285290762822" class="whatsapp-icon" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
